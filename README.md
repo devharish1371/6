@@ -35,9 +35,17 @@ python3 -m http.server 8000
 
 ### 4. Deploy to GitHub Pages
 
-1. Push to a GitHub repository
-2. Go to Settings → Pages → Source: main branch
-3. Share the link with her 💌
+Repository: [github.com/devharish1371/6](https://github.com/devharish1371/6)
+
+1. In the repo on GitHub: **Settings** → **Pages**
+2. **Build and deployment** → **Source**: *Deploy from a branch*
+3. **Branch**: `main`, folder **`/ (root)`** → Save
+4. After a minute or two, the site is live at  
+   **https://devharish1371.github.io/6/**
+
+If Pages does not appear, confirm the repo is **public** (or GitHub Pro for private Pages).
+
+A `.nojekyll` file is included so GitHub does not run Jekyll on your static files.
 
 ## Easter Egg 🥚
 
