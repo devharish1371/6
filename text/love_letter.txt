@@ -1,0 +1,3 @@
+Write your secret love letter here.
+It will appear when she types the secret word anywhere on the site.
+You can also edit this directly in js/config.js under 'loveLetter'.

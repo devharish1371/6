@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>D ♥ V — Our Story</title>
+  <meta name="description" content="A love story, six months in the making.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💐</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Background particles -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Floating music toggle -->
+  <button id="music-toggle" class="music-toggle" aria-label="Toggle music">
+    <span class="music-icon">♪</span>
+    <span class="music-status">OFF</span>
+  </button>
+
+  <!-- Quote overlay (shown during transitions) -->
+  <div id="quote-overlay" class="quote-overlay hidden">
+    <p id="quote-text" class="quote-text"></p>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- PAGE: Landing                               -->
+  <!-- ════════════════════════════════════════════ -->
+  <section id="page-landing" class="page active">
+    <div class="landing-content">
+      <div class="flower-frame">
+        <div class="flower-glow"></div>
+        <img src="assets/images/flower/Photo Nov 18 2025.jpg" alt="The first flower" id="flower-img" class="flower-img">
+        <div class="flower-shimmer"></div>
+      </div>
+      <h1 class="landing-title">It all started here...</h1>
+      <p class="landing-subtitle">a single flower, a million feelings</p>
+      <p class="landing-subtitle landing-subtitle-strong">The day I fell in love</p>
+      <button id="btn-enter" class="btn-enter">
+        <span>Us</span>
+        <span class="btn-plus">+</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- PAGE: Netflix-style Loading                 -->
+  <!-- ════════════════════════════════════════════ -->
+  <section id="page-loading" class="page">
+    <div class="loading-container">
+      <div class="loading-letters">
+        <span class="load-letter" data-delay="0">D</span>
+        <span class="load-heart">♥</span>
+        <span class="load-letter" data-delay="200">V</span>
+      </div>
+      <div class="loading-ripple"></div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- PAGE: Profile Select                        -->
+  <!-- ════════════════════════════════════════════ -->
+  <section id="page-profiles" class="page">
+    <div class="profiles-wrapper">
+      <h2 class="profiles-title">Choose Your Chapter</h2>
+      <div class="profiles-grid">
+        <div class="profile-card" data-profile="1_month" id="profile-1month">
+          <div class="profile-avatar">
+            <span class="profile-icon profile-number">1</span>
+          </div>
+          <span class="profile-label">1 Month</span>
+        </div>
+        <div class="profile-card" data-profile="3_month" id="profile-3month">
+          <div class="profile-avatar">
+            <span class="profile-icon profile-number">3</span>
+          </div>
+          <span class="profile-label">3 Months</span>
+        </div>
+        <div class="profile-card" data-profile="6_month" id="profile-6month">
+          <div class="profile-avatar">
+            <span class="profile-icon profile-number">6</span>
+          </div>
+          <span class="profile-label">6 Months</span>
+        </div>
+        <div class="profile-card" data-profile="game" id="profile-game">
+          <div class="profile-avatar game-avatar">
+            <span class="profile-icon">🎮</span>
+          </div>
+          <span class="profile-label">Our Game</span>
+        </div>
+      </div>
+      <div class="love-timer-container">
+        <p id="love-timer" class="love-timer"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- PAGE: Photo Carousel                        -->
+  <!-- ════════════════════════════════════════════ -->
+  <section id="page-carousel" class="page">
+    <button id="carousel-back" class="btn-back">← Back to Chapters</button>
+    <div class="carousel-header">
+      <h2 id="carousel-title" class="carousel-title"></h2>
+      <p id="carousel-subtitle" class="carousel-subtitle"></p>
+    </div>
+    <div class="carousel-stage">
+      <button class="carousel-arrow prev" id="carousel-prev" aria-label="Previous">‹</button>
+      <div class="carousel-viewport">
+        <div class="carousel-track" id="carousel-track"></div>
+      </div>
+      <button class="carousel-arrow next" id="carousel-next" aria-label="Next">›</button>
+    </div>
+    <div class="carousel-caption-box">
+      <p id="carousel-caption" class="carousel-caption"></p>
+    </div>
+    <div class="carousel-dots" id="carousel-dots"></div>
+    <div class="carousel-counter" id="carousel-counter"></div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- PAGE: Game — Run To Forever                 -->
+  <!-- ════════════════════════════════════════════ -->
+  <section id="page-game" class="page">
+    <button id="game-back" class="btn-back">← Back to Chapters</button>
+    <div class="game-ui">
+      <h2 class="game-title">Run To Forever</h2>
+      <div class="game-score-bar">
+        <div class="score-fill" id="score-fill"></div>
+        <span class="score-text">Score: <span id="score-value">0</span> / 25</span>
+      </div>
+    </div>
+    <div class="game-canvas-wrapper" id="game-canvas-wrapper">
+      <canvas id="game-canvas"></canvas>
+      <div id="vasu-chase-ui" class="vasu-chase-ui hidden" aria-live="polite">
+        <div class="vasu-chase-card">
+          <div class="vasu-chase-title">HOLD → SPRINT</div>
+          <div class="vasu-chase-sub">Right Arrow (PC) · Touch & Hold (Phone)</div>
+          <div class="vasu-chase-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div class="vasu-chase-fill" id="vasu-chase-fill"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Win sequence: celebrate on canvas + fireworks, then question, then finale -->
+      <div id="game-win-overlay" class="game-overlay game-win-overlay hidden">
+        <canvas id="fireworks-canvas"></canvas>
+        <div id="win-question-card" class="game-overlay-card win-question-card hidden">
+          <h3 class="win-question-title">Will u hold on to me?</h3>
+          <div class="win-question-actions">
+            <button type="button" id="btn-win-yes" class="btn-game">Yes ♥</button>
+            <button type="button" id="btn-win-no" class="btn-game secondary">No</button>
+          </div>
+        </div>
+        <div id="win-declined-card" class="game-overlay-card win-declined-card hidden">
+          <h3>Okay…</h3>
+          <p class="win-text">I’ll keep choosing you anyway.</p>
+          <button type="button" id="btn-win-declined-replay" class="btn-game">Play Again</button>
+          <button type="button" id="btn-win-declined-back" class="btn-game secondary">Back to Chapters</button>
+        </div>
+        <div id="win-finale-card" class="game-overlay-card win-card hidden">
+          <img id="end-page-img" class="end-page-img hidden" src="assets/images/end_page/end.jpg" alt="The End">
+          <div class="win-kiss">💋</div>
+          <div class="ring-animation">💍</div>
+          <h3>You Made It! 🎉</h3>
+          <p class="win-text">Dev & Kanmani<br><em>and they lived happily ever after...</em><br><small>(for now 😉)</small></p>
+          <button id="btn-game-replay" class="btn-game">Play Again</button>
+          <button id="btn-game-back-profiles" class="btn-game secondary">Back to Chapters</button>
+        </div>
+      </div>
+    </div>
+    <!-- Start overlay -->
+    <div id="game-start-overlay" class="game-overlay">
+      <div class="game-overlay-card">
+        <h3>Run To Forever 💍</h3>
+        <p>Jump over life's obstacles — together!</p>
+        <p class="game-hint">SPACE or TAP to jump · HOLD for higher!</p>
+        <button id="btn-game-start" class="btn-game">Start Running ♥</button>
+      </div>
+    </div>
+    <!-- Game over overlay -->
+    <div id="game-over-overlay" class="game-overlay hidden">
+      <div class="game-overlay-card">
+        <h3>Oops! 💔</h3>
+        <p>You stumbled, but love always gets back up!</p>
+        <p class="game-obstacle-name">Tripped on: <span id="fail-obstacle"></span></p>
+        <button id="btn-game-retry" class="btn-game">Try Again ♥</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- OVERLAY: Love Letter (hidden easter egg)    -->
+  <!-- ════════════════════════════════════════════ -->
+  <div id="love-letter-overlay" class="letter-overlay hidden">
+    <div class="letter-card">
+      <div class="letter-seal">
+        <span>♥</span>
+      </div>
+      <div class="letter-body" id="letter-body"></div>
+      <button id="btn-letter-close" class="btn-letter-close">close with love ♥</button>
+    </div>
+  </div>
+
+  <!-- Scripts (order matters) -->
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/landing.js"></script>
+  <script src="js/profiles.js"></script>
+  <script src="js/carousel.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
